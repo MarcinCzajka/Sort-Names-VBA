@@ -1,0 +1,54 @@
+Function sortNames(strName As String)
+
+If strName = "" Then
+    Exit Function
+End If
+
+Dim names() As String
+Dim temp As String
+Dim numOfNames As Integer
+Dim spacePos As Integer
+Dim spacePos2 As Integer
+Dim i, x As Integer
+
+    strName = LCase(strName)
+    strName = Trim(strName)
+    
+    For i = 1 To 5 'Remove double spaces
+        strName = Replace(strName, "  ", " ")
+    Next
+    
+    names = Split(strName, " ")
+    numOfNames = UBound(names)
+    
+    For x = 0 To numOfNames
+        For i = 0 To numOfNames
+            If names(x) < names(i) Then
+                temp = names(i)
+                names(i) = names(x)
+                names(x) = temp
+            End If
+        Next
+    Next
+    
+        For i = 0 To numOfNames
+            result = result & " " & names(i)
+        Next
+        
+        
+    sortujNazwisko = Application.WorksheetFunction.Proper(Trim(result))
+    
+End Function
+
+
+:Example of usage:
+
+Sub compareNames()
+Dim rCell As Range
+
+  For Each rCell In Selection 'It will replace all selected cells  with sorted version. If cell happen to be empty it will skip it.
+    rCell = sortNames(rCell.Value2)
+  Next
+  
+End Sub
+
