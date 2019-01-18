@@ -7,8 +7,6 @@ End If
 Dim names() As String
 Dim temp As String
 Dim numOfNames As Integer
-Dim spacePos As Integer
-Dim spacePos2 As Integer
 Dim i, x As Integer
 
     strName = LCase(strName)
